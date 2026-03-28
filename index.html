@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LV6 - Vocabulary Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at bottom, #1B2838 0%, #090A0F 100%);
+            overflow-x: hidden;
+        }
+        .space-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .container {
+            position: relative; z-index: 1; max-width: 1200px;
+            margin: 0 auto; padding: 40px 20px; min-height: 100vh;
+        }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.7); text-decoration: none;
+            font-size: 0.95rem; padding: 10px 20px; border-radius: 30px;
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            transition: all 0.3s; margin-bottom: 30px;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.2); color: white; transform: translateX(-5px); }
+        header { text-align: center; margin-bottom: 50px; }
+        header h1 {
+            font-size: 3rem; font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 30%, #f9a8d4 60%, #fbbf24 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 15px;
+        }
+        header p { color: rgba(255,255,255,0.6); font-size: 1.1rem; }
+        .total-progress {
+            max-width: 600px; margin: 0 auto 40px;
+            background: rgba(255,255,255,0.05); border-radius: 20px;
+            padding: 20px 30px; backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .total-progress h3 { color: rgba(255,255,255,0.8); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; text-align: center; }
+        .total-bar { height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; margin-bottom: 8px; }
+        .total-fill { height: 100%; background: linear-gradient(90deg, #8b5cf6, #ec4899, #f59e0b); border-radius: 5px; transition: width 0.5s ease; }
+        .total-text { text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+        .units-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; margin-top: 30px;
+        }
+        .unit-card {
+            position: relative; display: flex; flex-direction: column;
+            padding: 30px; text-decoration: none; border-radius: 24px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        .unit-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 4px; background: var(--gradient);
+        }
+        .unit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 50px var(--glow);
+        }
+        .unit-number {
+            font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.4);
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
+        }
+        .unit-title { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .unit-title .emoji { font-size: 1.8rem; }
+        .unit-description { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; flex: 1; }
+        .unit-stats { display: flex; gap: 15px; }
+        .stat { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .stat i { color: var(--accent); font-size: 0.8rem; }
+        .progress-indicator { display: flex; align-items: center; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .progress-bar-mini { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill-mini { height: 100%; background: var(--gradient); border-radius: 3px; transition: width 0.5s ease; }
+        .progress-text { color: rgba(255,255,255,0.6); font-size: 0.8rem; min-width: 35px; text-align: right; }
+        .unit-1 { --gradient: linear-gradient(90deg, #3b82f6, #6366f1); --glow: rgba(99,102,241,0.3); --accent: #818cf8; }
+        .unit-2 { --gradient: linear-gradient(90deg, #8b5cf6, #ec4899); --glow: rgba(139,92,246,0.3); --accent: #a78bfa; }
+        .unit-3 { --gradient: linear-gradient(90deg, #ef4444, #f97316); --glow: rgba(239,68,68,0.3); --accent: #f87171; }
+        .unit-4 { --gradient: linear-gradient(90deg, #10b981, #14b8a6); --glow: rgba(16,185,129,0.3); --accent: #34d399; }
+        .unit-5 { --gradient: linear-gradient(90deg, #f59e0b, #eab308); --glow: rgba(245,158,11,0.3); --accent: #fbbf24; }
+        .unit-6 { --gradient: linear-gradient(90deg, #06b6d4, #3b82f6); --glow: rgba(6,182,212,0.3); --accent: #22d3ee; }
+        .unit-7 { --gradient: linear-gradient(90deg, #7c3aed, #a855f7); --glow: rgba(124,58,237,0.3); --accent: #a78bfa; }
+        .unit-8 { --gradient: linear-gradient(90deg, #059669, #10b981); --glow: rgba(5,150,105,0.3); --accent: #34d399; }
+        .unit-9 { --gradient: linear-gradient(90deg, #ea580c, #dc2626); --glow: rgba(234,88,12,0.3); --accent: #fb923c; }
+        .unit-10 { --gradient: linear-gradient(90deg, #0891b2, #2563eb); --glow: rgba(8,145,178,0.3); --accent: #38bdf8; }
+        footer { text-align: center; margin-top: 60px; color: rgba(255,255,255,0.3); font-size: 0.9rem; }
+        @media (max-width: 600px) { header h1 { font-size: 2rem; } .units-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="space-bg"></div>
+    <div class="container">
+        <a href="../lv5.html" class="back-btn"><i class="fas fa-arrow-left"></i> Quay lại Learning Hub</a>
+        <header>
+            <h1>📚 LV6 Vocabulary</h1>
+            <p>Chọn Unit để bắt đầu học từ vựng - 10 Units, 295 từ</p>
+        </header>
+        <div class="total-progress">
+            <h3>📊 Tổng tiến độ</h3>
+            <div class="total-bar"><div class="total-fill" id="totalFill"></div></div>
+            <p class="total-text"><span id="totalLearned">0</span> / 295 từ (<span id="totalPercent">0</span>%)</p>
+        </div>
+        <div class="units-grid">
+            <a href="unit1.html" class="unit-card unit-1" data-unit="1">
+                <span class="unit-number">Unit 1</span>
+                <div class="unit-title"><span class="emoji">🎯</span> Dreams & Goals</div>
+                <p class="unit-description">Ước mơ, mục tiêu, ứng tuyển, bằng cấp và phát triển sự nghiệp</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 35 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-1"></div></div><span class="progress-text" id="pt-1">0%</span></div>
+            </a>
+            <a href="unit2.html" class="unit-card unit-2" data-unit="2">
+                <span class="unit-number">Unit 2</span>
+                <div class="unit-title"><span class="emoji">🤝</span> Character & Responsibility</div>
+                <p class="unit-description">Tính cách, trách nhiệm, đạo đức, mối quan hệ xã hội</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 23 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-2"></div></div><span class="progress-text" id="pt-2">0%</span></div>
+            </a>
+            <a href="unit3.html" class="unit-card unit-3" data-unit="3">
+                <span class="unit-number">Unit 3</span>
+                <div class="unit-title"><span class="emoji">🦸</span> Fears & Heroism</div>
+                <p class="unit-description">Nỗi sợ, phản ứng cơ thể, sự dũng cảm và khó khăn</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 33 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-3"></div></div><span class="progress-text" id="pt-3">0%</span></div>
+            </a>
+            <a href="unit4.html" class="unit-card unit-4" data-unit="4">
+                <span class="unit-number">Unit 4</span>
+                <div class="unit-title"><span class="emoji">😊</span> Getting Along</div>
+                <p class="unit-description">Quản lý cảm xúc, tính cách, tình bạn và giải quyết xung đột</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 35 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-4"></div></div><span class="progress-text" id="pt-4">0%</span></div>
+            </a>
+            <a href="unit5.html" class="unit-card unit-5" data-unit="5">
+                <span class="unit-number">Unit 5</span>
+                <div class="unit-title"><span class="emoji">😂</span> Humor</div>
+                <p class="unit-description">Các loại trò đùa, phản ứng hài hước và lý thuyết hài</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 18 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-5"></div></div><span class="progress-text" id="pt-5">0%</span></div>
+            </a>
+            <a href="unit6.html" class="unit-card unit-6" data-unit="6">
+                <span class="unit-number">Unit 6</span>
+                <div class="unit-title"><span class="emoji">✈️</span> Troubles Traveling</div>
+                <p class="unit-description">Sự cố khi du lịch, sân bay, bảo mật và thành ngữ</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 28 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-6"></div></div><span class="progress-text" id="pt-6">0%</span></div>
+            </a>
+            <a href="unit7.html" class="unit-card unit-7" data-unit="7">
+                <span class="unit-number">Unit 7</span>
+                <div class="unit-title"><span class="emoji">🧠</span> Mind Over Matter</div>
+                <p class="unit-description">Hội chứng sợ, tâm trí, y tế và thành ngữ tâm lý</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 39 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-7"></div></div><span class="progress-text" id="pt-7">0%</span></div>
+            </a>
+            <a href="unit8.html" class="unit-card unit-8" data-unit="8">
+                <span class="unit-number">Unit 8</span>
+                <div class="unit-title"><span class="emoji">⭐</span> Performing Best</div>
+                <p class="unit-description">Năng khiếu, kỹ năng, năng suất và thành ngữ hiệu suất</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 29 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-8"></div></div><span class="progress-text" id="pt-8">0%</span></div>
+            </a>
+            <a href="unit9.html" class="unit-card unit-9" data-unit="9">
+                <span class="unit-number">Unit 9</span>
+                <div class="unit-title"><span class="emoji">🚀</span> What Lies Ahead?</div>
+                <p class="unit-description">Công nghệ tương lai, nhân khẩu học, tự nhiên và dự báo</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 32 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-9"></div></div><span class="progress-text" id="pt-9">0%</span></div>
+            </a>
+            <a href="unit10.html" class="unit-card unit-10" data-unit="10">
+                <span class="unit-number">Unit 10</span>
+                <div class="unit-title"><span class="emoji">🌍</span> Interconnected World</div>
+                <p class="unit-description">Toàn cầu hóa, cụm động từ, văn hóa và thành ngữ quốc tế</p>
+                <div class="unit-stats"><span class="stat"><i class="fas fa-book"></i> 23 từ</span><span class="stat"><i class="fas fa-layer-group"></i> 4 nhóm</span></div>
+                <div class="progress-indicator"><div class="progress-bar-mini"><div class="progress-fill-mini" id="progress-10"></div></div><span class="progress-text" id="pt-10">0%</span></div>
+            </a>
+        </div>
+        <footer><p>💡 Click vào unit để học từ vựng • Double-click thẻ từ để đánh dấu đã học</p></footer>
+    </div>
+    <script>
+        const unitWordCounts = {1:35,2:23,3:33,4:35,5:18,6:28,7:39,8:29,9:32,10:23};
+        let totalLearned = 0, totalWords = 295;
+        Object.keys(unitWordCounts).forEach(u => {
+            const learned = JSON.parse(localStorage.getItem('lv6unit'+u+'Learned') || '[]');
+            const total = unitWordCounts[u];
+            const pct = Math.round((learned.length/total)*100);
+            const bar = document.getElementById('progress-'+u);
+            const txt = document.getElementById('pt-'+u);
+            if(bar) bar.style.width = pct+'%';
+            if(txt) txt.textContent = pct+'%';
+            totalLearned += learned.length;
+        });
+        const totalPct = Math.round((totalLearned/totalWords)*100);
+        document.getElementById('totalFill').style.width = totalPct+'%';
+        document.getElementById('totalLearned').textContent = totalLearned;
+        document.getElementById('totalPercent').textContent = totalPct;
+    </script>
+</body>
+</html>

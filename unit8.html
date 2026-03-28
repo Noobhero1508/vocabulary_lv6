@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 8 - Performing at Your Best</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#059669;--secondary:#10b981;--dark:#1e1b4b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Outfit',sans-serif;background:linear-gradient(135deg,#059669 0%,#10b981 100%);min-height:100vh;padding:20px}.container{max-width:1400px;margin:0 auto}.back-btn{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;padding:8px 16px;border-radius:20px;background:rgba(255,255,255,0.15);transition:all 0.3s;margin-bottom:15px}.back-btn:hover{background:rgba(255,255,255,0.3);transform:translateX(-3px)}header{text-align:center;padding:30px 20px;color:white}header h1{font-size:2.5rem;text-shadow:2px 2px 10px rgba(0,0,0,0.3);margin-bottom:8px}header p{font-size:1.1rem;opacity:0.9}.stats{display:flex;justify-content:center;gap:20px;margin:20px 0;flex-wrap:wrap}.stat-card{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);padding:15px 30px;border-radius:16px;text-align:center;color:white}.stat-card h3{font-size:2rem}.stat-card p{opacity:0.8;font-size:0.85rem}.progress-bar{width:100%;max-width:500px;height:8px;background:rgba(255,255,255,0.3);border-radius:10px;margin:15px auto;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:10px;width:0%;transition:width 0.5s ease}.learned-count{text-align:center;color:white;margin-bottom:15px;font-size:0.9rem}.search-box{display:flex;justify-content:center;margin-bottom:15px}.search-box input{width:100%;max-width:500px;padding:12px 22px;border:none;border-radius:50px;font-size:1rem;box-shadow:0 5px 20px rgba(0,0,0,0.1);font-family:inherit}.search-box input:focus{outline:3px solid var(--primary)}.filter-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0}.filter-btn{padding:10px 20px;border:none;border-radius:25px;background:rgba(255,255,255,0.2);color:white;cursor:pointer;transition:all 0.3s;font-family:inherit;font-size:0.9rem}.filter-btn:hover,.filter-btn.active{background:white;color:var(--primary);transform:translateY(-2px)}.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-top:20px}.vocab-card{background:white;border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,0.1);transition:all 0.3s ease;cursor:pointer;position:relative;overflow:hidden}.vocab-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--primary),var(--secondary))}.vocab-card:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,0.15)}.vocab-card .word{font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.speak-btn{background:linear-gradient(135deg,var(--primary),var(--secondary));border:none;color:white;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;flex-shrink:0}.speak-btn:hover{transform:scale(1.15)}.speak-btn.speaking{animation:pulse 0.8s infinite;background:linear-gradient(135deg,#f59e0b,#fbbf24)}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}.vocab-card .type{display:inline-block;font-size:0.7rem;color:#94a3b8;font-style:italic;margin-bottom:4px}.vocab-card .meaning{color:var(--primary);font-weight:500;margin-bottom:4px}.vocab-card .phrase{background:linear-gradient(135deg,#ecfdf5,#d1fae5);padding:12px;border-radius:10px;font-size:0.9rem;line-height:1.6;color:#334155;display:none}.vocab-card.expanded .phrase{display:block;animation:fadeIn 0.3s ease}.phrase-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}.phrase-header .speak-btn{width:26px;height:26px;font-size:11px}.phrase-label{font-weight:600;color:var(--primary);font-size:0.8rem}.phrase-text{margin:0}.category-tag{display:inline-block;padding:3px 10px;border-radius:15px;font-size:0.7rem;margin-bottom:8px;font-weight:500}.cat-talents{background:#dbeafe;color:#2563eb}.cat-skills{background:#f3e8ff;color:#9333ea}.cat-productivity{background:#d1fae5;color:#059669}.cat-idioms{background:#fef3c7;color:#d97706}@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}footer{text-align:center;padding:30px;color:white;opacity:0.8;font-size:0.9rem}@media(max-width:768px){header h1{font-size:1.8rem}.vocab-grid{grid-template-columns:1fr}.stats{flex-direction:column;align-items:center}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-btn">← Quay lại</a>
+    <header><h1>⭐ Unit 8: Performing at Your Best</h1><p>Click thẻ để xem giải thích, double-click để đánh dấu đã học</p></header>
+    <div class="stats"><div class="stat-card"><h3 id="totalWords">0</h3><p>Tổng từ</p></div><div class="stat-card"><h3 id="learnedWords">0</h3><p>Đã học</p></div><div class="stat-card"><h3>4</h3><p>Nhóm</p></div></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <p class="learned-count">Tiến độ: <span id="progressText">0%</span></p>
+    <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Tìm kiếm..."></div>
+    <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="talents">Năng khiếu</button>
+        <button class="filter-btn" data-filter="skills">Kỹ năng</button>
+        <button class="filter-btn" data-filter="productivity">Năng suất</button>
+        <button class="filter-btn" data-filter="idioms">Thành ngữ</button>
+    </div>
+    <div class="vocab-grid" id="vocabGrid"></div>
+    <footer><p>💡 Double-click để đánh dấu đã học</p></footer>
+</div>
+<script>
+const vocabularyData=[
+{word:"be good with one's hands",type:"idiom",meaning:"khéo tay",phrase:"To be skillful at making or fixing things.",category:"talents"},
+{word:"be mechanically inclined",type:"idiom",meaning:"có khiếu về máy móc",phrase:"To naturally understand how machines work.",category:"talents"},
+{word:"challenge yourself",type:"phrase",meaning:"thử thách bản thân",phrase:"To test your abilities by doing something difficult.",category:"productivity"},
+{word:"curious / inquisitive",type:"adjective",meaning:"tò mò, ham học hỏi",phrase:"Wanting to know or learn about something.",category:"skills"},
+{word:"develop a routine",type:"phrase",meaning:"phát triển thói quen",phrase:"To create a regular way of doing things.",category:"productivity"},
+{word:"go offline",type:"phrase",meaning:"ngắt kết nối mạng",phrase:"To disconnect from the internet.",category:"productivity"},
+{word:"goes in one ear and out the other",type:"idiom",meaning:"vào tai này ra tai kia",phrase:"To be heard but quickly forgotten.",category:"idioms"},
+{word:"gut feeling",type:"idiom",meaning:"trực giác",phrase:"A strong belief about something that cannot be completely explained.",category:"idioms"},
+{word:"have a good intuitive sense",type:"idiom",meaning:"có trực giác tốt",phrase:"To be able to understand things quickly without thinking deeply.",category:"talents"},
+{word:"have a head for figures",type:"idiom",meaning:"giỏi tính toán",phrase:"To be naturally good at mathematics or numbers.",category:"talents"},
+{word:"have a knack for learning languages",type:"idiom",meaning:"có năng khiếu học ngôn ngữ",phrase:"To have a natural skill for learning new languages easily.",category:"talents"},
+{word:"have a way with people",type:"idiom",meaning:"giỏi cư xử với người khác",phrase:"To be very good at dealing with people.",category:"talents"},
+{word:"have a way with words",type:"idiom",meaning:"khéo ăn nói",phrase:"To be very good at speaking or writing.",category:"talents"},
+{word:"have an ear for music",type:"idiom",meaning:"có năng khiếu âm nhạc",phrase:"To be able to hear, remember, and understand music easily.",category:"talents"},
+{word:"have an eye for detail",type:"idiom",meaning:"có con mắt tinh tế",phrase:"To be very good at noticing small things.",category:"talents"},
+{word:"I can't help it",type:"idiom",meaning:"tôi không thể kìm được",phrase:"I cannot stop myself from doing it.",category:"idioms"},
+{word:"inventive / imaginative",type:"adjective",meaning:"sáng tạo",phrase:"Good at thinking of new and original ideas.",category:"skills"},
+{word:"it's now or never",type:"idiom",meaning:"bây giờ hoặc không bao giờ",phrase:"You must do it immediately or you will lose the chance forever.",category:"idioms"},
+{word:"make a list",type:"phrase",meaning:"tạo danh sách",phrase:"To write down a series of things to do.",category:"productivity"},
+{word:"open-minded",type:"adjective",meaning:"cởi mở",phrase:"Willing to listen to and accept new ideas.",category:"skills"},
+{word:"out of the blue",type:"idiom",meaning:"hoàn toàn bất ngờ",phrase:"Suddenly and unexpectedly.",category:"idioms"},
+{word:"perceptive / observant",type:"adjective",meaning:"tinh ý, có óc quan sát",phrase:"Very good at noticing and understanding things.",category:"skills"},
+{word:"persistent",type:"adjective",meaning:"kiên trì",phrase:"Continuing to try doing something even when it is difficult.",category:"skills"},
+{word:"put your nose to the grindstone",type:"idiom",meaning:"cắm đầu vào việc",phrase:"To work very hard without stopping.",category:"idioms"},
+{word:"reserve 'do not disturb' time",type:"idiom",meaning:"dành thời gian không bị làm phiền",phrase:"To set aside time when people cannot interrupt you.",category:"productivity"},
+{word:"stay organized",type:"phrase",meaning:"sống ngăn nắp",phrase:"To keep your things and plans in a neat and orderly way.",category:"productivity"},
+{word:"take a breather",type:"phrase",meaning:"nghỉ giải lao",phrase:"To take a short break from work or exercise.",category:"productivity"},
+{word:"talented",type:"adjective",meaning:"tài năng",phrase:"Having a natural ability to do something well.",category:"skills"},
+{word:"witty",type:"adjective",meaning:"dí dỏm",phrase:"Using words in a clever and funny way.",category:"skills"}
+];
+const categoryLabels={talents:{label:"Năng khiếu",class:"cat-talents"},skills:{label:"Kỹ năng",class:"cat-skills"},productivity:{label:"Năng suất",class:"cat-productivity"},idioms:{label:"Thành ngữ",class:"cat-idioms"}};
+let learnedWords=JSON.parse(localStorage.getItem('lv6unit8Learned')||'[]');let currentFilter='all';
+function speakWord(w,b){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;const v=window.speechSynthesis.getVoices();const e=v.find(x=>x.lang.startsWith('en'));if(e)u.voice=e;b.classList.add('speaking');u.onend=()=>b.classList.remove('speaking');u.onerror=()=>b.classList.remove('speaking');window.speechSynthesis.speak(u);}
+function speakPhrase(h,b){const d=document.createElement('div');d.innerHTML=h;speakWord(d.textContent||d.innerText,b);}
+if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=()=>{};
+function renderCards(f='all',s=''){const g=document.getElementById('vocabGrid');g.innerHTML='';let d=vocabularyData;if(f!=='all')d=d.filter(v=>v.category===f);if(s){const q=s.toLowerCase();d=d.filter(v=>v.word.toLowerCase().includes(q)||v.meaning.toLowerCase().includes(q));}d.forEach(v=>{const c=categoryLabels[v.category];const il=learnedWords.includes(v.word);const card=document.createElement('div');card.className=`vocab-card ${il?'learned':''}`;card.style.opacity=il?'0.7':'1';const pe=v.phrase.replace(/'/g,"\\'");card.innerHTML=`<span class="category-tag ${c.class}">${c.label}</span><div class="word"><button class="speak-btn" onclick="event.stopPropagation();speakWord('${v.word.replace(/'/g,"\\'")}',this)">🔊</button><span>${il?'✅ ':''}${v.word}</span></div><span class="type">${v.type}</span><div class="meaning">${v.meaning}</div><div class="phrase"><div class="phrase-header"><button class="speak-btn" onclick="event.stopPropagation();speakPhrase('${pe}',this)">🔊</button><span class="phrase-label">English:</span></div><p class="phrase-text">${v.phrase}</p></div>`;card.addEventListener('click',()=>card.classList.toggle('expanded'));card.addEventListener('dblclick',()=>toggleLearned(v.word));g.appendChild(card);});updateProgress();}
+function toggleLearned(w){if(learnedWords.includes(w))learnedWords=learnedWords.filter(x=>x!==w);else learnedWords.push(w);localStorage.setItem('lv6unit8Learned',JSON.stringify(learnedWords));renderCards(currentFilter,document.getElementById('searchInput').value);}
+function updateProgress(){const t=vocabularyData.length,l=learnedWords.length,p=Math.round((l/t)*100);document.getElementById('learnedWords').textContent=l;document.getElementById('totalWords').textContent=t;document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressText').textContent=p+'%';}
+document.querySelectorAll('.filter-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentFilter=b.dataset.filter;renderCards(currentFilter,document.getElementById('searchInput').value);});});
+document.getElementById('searchInput').addEventListener('input',e=>renderCards(currentFilter,e.target.value));
+renderCards();
+</script>
+</body>
+</html>
