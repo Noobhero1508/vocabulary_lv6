@@ -65,64 +65,63 @@
         <div class="stats">
             <div class="stat-card"><h3 id="totalWords">0</h3><p>Tổng từ</p></div>
             <div class="stat-card"><h3 id="learnedWords">0</h3><p>Đã học</p></div>
-            <div class="stat-card"><h3>4</h3><p>Nhóm</p></div>
+            <div class="stat-card"><h3>1</h3><p>Nhóm</p></div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
         <p class="learned-count">Tiến độ: <span id="progressText">0%</span></p>
         <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Tìm kiếm từ vựng..."></div>
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">Tất cả</button>
-            <button class="filter-btn" data-filter="goals">Mục tiêu</button>
-            <button class="filter-btn" data-filter="education">Giáo dục</button>
-            <button class="filter-btn" data-filter="employment">Việc làm</button>
-            <button class="filter-btn" data-filter="qualities">Phẩm chất</button>
-        </div>
+        
         <div class="vocab-grid" id="vocabGrid"></div>
         <footer><p>💡 Double-click để đánh dấu đã học</p></footer>
     </div>
     <script>
         const vocabularyData = [
-            { word: "achievable / unachievable", type: "adjective", meaning: "có thể đạt được / không thể", phrase: "Possible to do or complete successfully. / Not possible to do.", category: "goals" },
-            { word: "ambitious", type: "adjective", meaning: "tham vọng", phrase: "Having a strong desire to be successful or powerful.", category: "qualities" },
-            { word: "apply for", type: "phrasal verb", meaning: "ứng tuyển (công việc)", phrase: "To formally ask for a job, usually in writing.", category: "employment" },
-            { word: "apply to", type: "phrasal verb", meaning: "ứng tuyển (trường học)", phrase: "To formally ask to study at a school or university.", category: "education" },
-            { word: "avoid responsibilities", type: "collocation", meaning: "trốn tránh trách nhiệm", phrase: "To intentionally not do the things you are supposed to do.", category: "goals" },
-            { word: "be accepted to / into / by", type: "phrasal verb", meaning: "được chấp nhận / vào / bởi", phrase: "To be allowed to join an organization or school.", category: "education" },
-            { word: "be rejected by", type: "phrasal verb", meaning: "bị từ chối", phrase: "To not be accepted for a job or school.", category: "employment" },
-            { word: "brag about yourself", type: "phrase", meaning: "khoe khoang về bản thân", phrase: "To talk too proudly about your achievements.", category: "qualities" },
-            { word: "contact", type: "verb", meaning: "liên lạc", phrase: "To communicate with someone by calling or writing.", category: "employment" },
-            { word: "criticize", type: "verb", meaning: "chỉ trích, phê bình", phrase: "To say what is bad or wrong with someone or something.", category: "qualities" },
-            { word: "decide on", type: "phrasal verb", meaning: "quyết định", phrase: "To choose something or someone after thinking carefully.", category: "goals" },
-            { word: "employment", type: "noun", meaning: "việc làm", phrase: "The condition of having a paid job.", category: "employment" },
-            { word: "enroll in", type: "phrasal verb", meaning: "đăng kí vào", phrase: "To officially join a course, school, or program.", category: "education" },
-            { word: "fulfill a dream", type: "phrase", meaning: "thực hiện giấc mơ", phrase: "To make your dream happen or come true.", category: "goals" },
-            { word: "get a degree / certificate in", type: "phrase", meaning: "có bằng cấp, chứng nhận", phrase: "To finish studying and get a paper showing your qualification.", category: "education" },
-            { word: "get certified in", type: "phrase", meaning: "được chứng nhận về…", phrase: "To receive an official document showing you have a specific skill.", category: "education" },
-            { word: "get experience in", type: "phrase", meaning: "có kinh nghiệm trong lĩnh vực", phrase: "To learn by doing a specific job or activity over time.", category: "employment" },
-            { word: "get training in", type: "phrase", meaning: "được đào tạo trong lĩnh vực", phrase: "To learn the specific skills needed for a job.", category: "employment" },
-            { word: "have experience", type: "phrase", meaning: "có kinh nghiệm", phrase: "To already know how to do something from doing it before.", category: "employment" },
-            { word: "have experience in", type: "phrase", meaning: "có kinh nghiệm lĩnh vực nào", phrase: "To know a lot about a specific subject or kind of work.", category: "employment" },
-            { word: "have experience with", type: "phrase", meaning: "có kinh nghiệm với việc", phrase: "To know how to use or deal with a specific tool or situation.", category: "employment" },
-            { word: "have training in", type: "phrase", meaning: "được đào tạo về", phrase: "To have learned the necessary skills for something.", category: "education" },
-            { word: "modest", type: "adjective", meaning: "khiêm tốn", phrase: "Not talking much about your own abilities or successes.", category: "qualities" },
-            { word: "position", type: "noun", meaning: "vị trí", phrase: "A specific job within a company or organization.", category: "employment" },
-            { word: "pursue a goal", type: "phrase", meaning: "theo đuổi mục tiêu", phrase: "To try to achieve something over a period of time.", category: "goals" },
-            { word: "put (something) off", type: "phrasal verb", meaning: "trì hoãn công việc nào đó", phrase: "To delay doing something until a later time.", category: "goals" },
-            { word: "realistic / unrealistic", type: "adjective", meaning: "thực tế / không thực tế", phrase: "Understanding what is possible. / Having wrong ideas about what is possible.", category: "qualities" },
-            { word: "set a goal", type: "phrase", meaning: "thiết lập mục tiêu", phrase: "To decide what you want to achieve in the future.", category: "goals" },
-            { word: "share responsibilities", type: "collocation", meaning: "chia sẻ trách nhiệm", phrase: "To divide work or duties with other people.", category: "goals" },
-            { word: "sign up for", type: "phrasal verb", meaning: "đăng kí vào", phrase: "To put your name on a list to join a class or activity.", category: "education" },
-            { word: "start date", type: "compound noun", meaning: "ngày bắt đầu", phrase: "The specific day when a job, event, or class begins.", category: "employment" },
-            { word: "switch to", type: "phrasal verb", meaning: "chuyển sang", phrase: "To change from doing one thing to doing another.", category: "goals" },
-            { word: "take up", type: "phrasal verb", meaning: "đảm nhận, bắt đầu làm gì", phrase: "To start doing a new habit, job, or activity.", category: "goals" },
-            { word: "training", type: "gerund/noun", meaning: "việc huấn luyện", phrase: "The process of learning the skills you need for a job.", category: "employment" },
-            { word: "work towards", type: "phrase", meaning: "hướng về mục tiêu", phrase: "To try hard to achieve a future goal.", category: "goals" }
+            { word: "Achievable", type: "adj", meaning: "Có thể đạt được.", phrase: "You should set an achievable goal for your English class.", category: "general" },
+            { word: "Ambitious", type: "adj", meaning: "Đầy tham vọng.", phrase: "He is an ambitious student who wants to study in the US.", category: "general" },
+            { word: "Apply for", type: "v", meaning: "Nộp đơn xin việc/ứng tuyển.", phrase: "I want to apply for the sales position.", category: "general" },
+            { word: "Apply to", type: "v", meaning: "Nộp đơn vào trường/chương trình.", phrase: "She decided to apply to the university.", category: "general" },
+            { word: "Apparently / Obvious", type: "phrase/idiom", meaning: "Rõ ràng.", phrase: "Apparently, he didn\'t study for the test.", category: "general" },
+            { word: "Attach", type: "v", meaning: "Đính kèm.", phrase: "Please attach your resume to the email.", category: "general" },
+            { word: "Be accepted to/into/by", type: "v", meaning: "Được chấp nhận.", phrase: "I was accepted into the IT program.", category: "general" },
+            { word: "Be rejected by", type: "v", meaning: "Bị từ chối.", phrase: "He was rejected by the company because he lacked experience.", category: "general" },
+            { word: "Brag", type: "v", meaning: "Khoe khoang.", phrase: "He always brags about his new car.", category: "general" },
+            { word: "Breadwinner", type: "n", meaning: "Trụ cột gia đình.", phrase: "My father is the main breadwinner in my family.", category: "general" },
+            { word: "Candidate", type: "n", meaning: "Ứng viên.", phrase: "She is the best candidate for this job.", category: "general" },
+            { word: "Career", type: "n", meaning: "Sự nghiệp.", phrase: "I want to build a career in artificial intelligence.", category: "general" },
+            { word: "Colleague", type: "n", meaning: "Đồng nghiệp.", phrase: "My colleagues are very friendly and helpful.", category: "general" },
+            { word: "Competitive", type: "adj", meaning: "Cạnh tranh.", phrase: "The smartphone market is very competitive.", category: "general" },
+            { word: "Criticize", type: "v", meaning: "Chỉ trích.", phrase: "The manager criticized him for being late.", category: "general" },
+            { word: "Demonstrate", type: "v", meaning: "Chứng minh/Thể hiện.", phrase: "You need to demonstrate your skills in the interview.", category: "general" },
+            { word: "End up + V-ing", type: "phrase/idiom", meaning: "Cuối cùng lại làm gì (không dự định trước).", phrase: "We got lost and ended up walking for miles.", category: "general" },
+            { word: "Enroll in", type: "v", meaning: "Đăng ký (khóa học/trường).", phrase: "I will enroll in a yoga class next month.", category: "general" },
+            { word: "Expect", type: "v", meaning: "Mong đợi.", phrase: "I expect to pass the exam with high marks.", category: "general" },
+            { word: "Fulfill", type: "v", meaning: "Hoàn thành/Thực hiện (ước mơ).", phrase: "She finally fulfilled her dream of becoming a doctor.", category: "general" },
+            { word: "Heritage", type: "n", meaning: "Di sản.", phrase: "We must protect our cultural heritage.", category: "general" },
+            { word: "I'll keep my fingers crossed for you", type: "phrase/idiom", meaning: "Chúc may mắn.", phrase: "You have a test tomorrow? I\'ll keep my fingers crossed for you!", category: "general" },
+            { word: "I've got my heart set on", type: "phrase/idiom", meaning: "Thực sự rất muốn.", phrase: "I\'ve got my heart set on buying a new laptop.", category: "general" },
+            { word: "It’s just waiting and seeing", type: "phrase/idiom", meaning: "Cứ chờ xem sao.", phrase: "We did our best. Now it\'s just waiting and seeing.", category: "general" },
+            { word: "Major red flag", type: "phrase/idiom", meaning: "Dấu hiệu cảnh báo nghiêm trọng.", phrase: "Arriving late for an interview is a major red flag.", category: "general" },
+            { word: "Modest", type: "adj", meaning: "Khiêm tốn.", phrase: "Even though he is rich, he is very modest.", category: "general" },
+            { word: "Observe", type: "v", meaning: "Quan sát.", phrase: "The teacher asked us to observe the birds in the park.", category: "general" },
+            { word: "Outstanding", type: "adj", meaning: "Vượt trội/Xuất sắc.", phrase: "He is an outstanding player in our team.", category: "general" },
+            { word: "Possess", type: "v", meaning: "Sở hữu.", phrase: "You need to possess good communication skills.", category: "general" },
+            { word: "Pursue", type: "v", meaning: "Theo đuổi.", phrase: "I want to pursue a career in technology.", category: "general" },
+            { word: "Put off", type: "v", meaning: "Trì hoãn.", phrase: "Don\'t put off your homework until tomorrow.", category: "general" },
+            { word: "Realistic", type: "adj", meaning: "Thực tế.", phrase: "We need a realistic plan to finish this project.", category: "general" },
+            { word: "Reassure", type: "v", meaning: "Trấn an.", phrase: "The doctor reassured the patient that the surgery was safe.", category: "general" },
+            { word: "Resume", type: "n", meaning: "Sơ yếu lý lịch.", phrase: "I sent my resume to the HR department.", category: "general" },
+            { word: "Run of the mill / Ordinary", type: "phrase/idiom", meaning: "Bình thường/Không đặc biệt.", phrase: "It was just a run-of-the-mill action movie.", category: "general" },
+            { word: "Set a goal", type: "phrase/idiom", meaning: "Đặt mục tiêu.", phrase: "You should set a goal to read one book a month.", category: "general" },
+            { word: "Sign up for", type: "v", meaning: "Đăng ký (hoạt động).", phrase: "I want to sign up for the English club.", category: "general" },
+            { word: "Six of one, half a dozen of the other", type: "phrase/idiom", meaning: "Như nhau cả thôi.", phrase: "We can take the bus or the train; it\'s six of one, half a dozen of the other.", category: "general" },
+            { word: "Spouse", type: "n", meaning: "Vợ/Chồng.", phrase: "Employees can bring their spouse to the company party.", category: "general" },
+            { word: "Switch to", type: "v", meaning: "Chuyển sang.", phrase: "I decided to switch to a healthier diet.", category: "general" },
+            { word: "Take up", type: "v", meaning: "Bắt đầu một thói quen/sở thích mới.", phrase: "I plan to take up playing the guitar.", category: "general" },
+            { word: "The sky’s the limit", type: "phrase/idiom", meaning: "Không có giới hạn.", phrase: "With your talent, the sky\'s the limit!", category: "general" },
+            { word: "Work towards", type: "phrase/idiom", meaning: "Hướng tới/Làm việc vì mục tiêu.", phrase: "We are working towards a better future.", category: "general" }
         ];
         const categoryLabels = {
-            goals: { label: "Mục tiêu", class: "cat-goals" },
-            education: { label: "Giáo dục", class: "cat-education" },
-            employment: { label: "Việc làm", class: "cat-employment" },
-            qualities: { label: "Phẩm chất", class: "cat-qualities" }
+            general: { label: "Từ vựng chung", class: "cat-goals" }
         };
         let learnedWords = JSON.parse(localStorage.getItem('lv6unit1Learned') || '[]');
         let currentFilter = 'all';
@@ -151,7 +150,7 @@
                     <div class="word"><button class="speak-btn" onclick="event.stopPropagation();speakWord('${vocab.word.replace(/'/g,"\\'")}',this)" title="Nghe">🔊</button><span>${isLearned?'✅ ':''}${vocab.word}</span></div>
                     <span class="type">${vocab.type}</span>
                     <div class="meaning">${vocab.meaning}</div>
-                    <div class="phrase"><div class="phrase-header"><button class="speak-btn" onclick="event.stopPropagation();speakPhrase('${pe}',this)" title="Nghe">🔊</button><span class="phrase-label">English:</span></div><p class="phrase-text">${vocab.phrase}</p></div>`;
+                    <div class="phrase"><div class="phrase-header"><button class="speak-btn" onclick="event.stopPropagation();speakPhrase('${pe}',this)" title="Nghe">🔊</button><span class="phrase-label">Example:</span></div><p class="phrase-text">${vocab.phrase}</p></div>`;
                 card.addEventListener('click',()=>card.classList.toggle('expanded'));
                 card.addEventListener('dblclick',()=>toggleLearned(vocab.word));
                 grid.appendChild(card);
