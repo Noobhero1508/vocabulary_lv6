@@ -22,27 +22,47 @@
     <footer><p>💡 Double-click để đánh dấu đã học</p></footer>
 </div>
 <script>
-const vocabularyData=[
-{word:"par for the course",type:"idiom",meaning:"đó là điều tất yếu",phrase:"What you would expect to happen; normal.",category:"idioms"},
-{word:"a political joke",type:"noun phrase",meaning:"trò đùa về chính trị",phrase:"A funny story about government or politicians.",category:"types"},
-{word:"a sexist joke",type:"noun phrase",meaning:"trò đùa phân biệt giới tính",phrase:"A funny story that is unfair to women or men.",category:"types"},
-{word:"a verbal joke",type:"noun phrase",meaning:"trò đùa bằng lời nói",phrase:"A joke using spoken words.",category:"types"},
-{word:"an ethnic joke",type:"noun phrase",meaning:"trò đùa về dân tộc",phrase:"A funny story about people from a particular race or culture.",category:"types"},
-{word:"dirty joke",type:"noun phrase",meaning:"trò đùa thô tục",phrase:"A joke about sex or rude things.",category:"types"},
-{word:"don't take it so hard",type:"idiom",meaning:"đừng trầm trọng hóa",phrase:"Do not be so upset about it.",category:"idioms"},
-{word:"easier said than done!",type:"idiom",meaning:"nói dễ hơn làm",phrase:"It is easy to talk about, but difficult to actually do.",category:"idioms"},
-{word:"hilarious",type:"adjective",meaning:"rất vui nhộn",phrase:"Extremely funny.",category:"reactions"},
-{word:"hysterical",type:"adjective",meaning:"cười điên cuồng",phrase:"Extremely funny.",category:"reactions"},
-{word:"I don't get it",type:"idiom",meaning:"tôi không hiểu",phrase:"I do not understand the joke.",category:"reactions"},
-{word:"I made a total fool of myself",type:"idiom",meaning:"tôi trở nên ngớ ngẩn",phrase:"I did something that made me look very stupid.",category:"idioms"},
-{word:"It went over like a lead balloon",type:"idiom",meaning:"đùa nhạt, không ai hưởng ứng",phrase:"People did not like the joke or idea at all.",category:"reactions"},
-{word:"that went over my head",type:"idiom",meaning:"vượt quá tầm hiểu biết",phrase:"I did not understand it because it was too difficult.",category:"reactions"},
-{word:"the butt of a joke",type:"idiom",meaning:"đối tượng bị giễu cợt",phrase:"The person who is being laughed at in a joke.",category:"idioms"},
-{word:"the incongruity theory",type:"phrase",meaning:"thuyết không thống nhất",phrase:"The idea that we laugh at things that surprise us or don't fit together.",category:"theories"},
-{word:"the relief theory",type:"phrase",meaning:"thuyết giải khuây",phrase:"The idea that laughing helps us release tension or stress.",category:"theories"},
-{word:"the superiority theory",type:"phrase",meaning:"thuyết ưu việt",phrase:"The idea that we laugh because we feel better than someone else.",category:"theories"}
-];
-const categoryLabels={types:{label:"Loại trò đùa",class:"cat-types"},reactions:{label:"Phản ứng",class:"cat-reactions"},theories:{label:"Lý thuyết",class:"cat-theories"},idioms:{label:"Thành ngữ",class:"cat-idioms"}};
+const vocabularyData = [
+            { word: "Mortify", type: "vocab", meaning: "Làm nhục", phrase: "", category: "general" },
+            { word: "Ketchup", type: "vocab", meaning: "Sốt cà chua", phrase: "", category: "general" },
+            { word: "It went over like a lead balloon", type: "phrase/idiom", meaning: "Không ai thích trò đùa của bạn", phrase: "", category: "general" },
+            { word: "I made a total fool of myself", type: "phrase/idiom", meaning: "Làm 1 việc ngớ ngẩn bị người khác cười vào mặt", phrase: "", category: "general" },
+            { word: "It just isn’t done", type: "phrase/idiom", meaning: "Mọi người nghĩ điều đó thô lỗ, không phù hợp", phrase: "", category: "general" },
+            { word: "I don’t get it", type: "phrase/idiom", meaning: "Tôi không hiểu", phrase: "", category: "general" },
+            { word: "Par for the course", type: "phrase/idiom", meaning: "Nó không có gì bất thường", phrase: "", category: "general" },
+            { word: "Don’t take it so hard", type: "phrase/idiom", meaning: "Sử dụng khi ai đó phản ứng thái quá", phrase: "", category: "general" },
+            { word: "Easier said than done", type: "phrase/idiom", meaning: "Nó thì không dễ để làm theo", phrase: "", category: "general" },
+            { word: "Sophisticated", type: "vocab", meaning: "Tinh vi", phrase: "", category: "general" },
+            { word: "Slapstick", type: "vocab", meaning: "Trò hề", phrase: "", category: "general" },
+            { word: "Warmth", type: "vocab", meaning: "Sự ấm áp", phrase: "", category: "general" },
+            { word: "Internal organ", type: "phrase/idiom", meaning: "Cơ quan nội tạng", phrase: "", category: "general" },
+            { word: "Suffering", type: "vocab", meaning: "Đau khổ", phrase: "", category: "general" },
+            { word: "Prove", type: "vocab", meaning: "Chứng tỏ", phrase: "", category: "general" },
+            { word: "Laid the foundation", type: "phrase/idiom", meaning: "Đặt nền móng", phrase: "", category: "general" },
+            { word: "Life-threatening", type: "vocab", meaning: "Nguy hiểm đến tính mạng", phrase: "", category: "general" },
+            { word: "Chronic", type: "vocab", meaning: "Mãn tính", phrase: "", category: "general" },
+            { word: "Healing", type: "vocab", meaning: "Lành lại, phục hồi sức khỏe", phrase: "", category: "general" },
+            { word: "Cure", type: "vocab", meaning: "Chữa khỏi", phrase: "", category: "general" },
+            { word: "Contagious", type: "vocab", meaning: "Dễ lây lan", phrase: "", category: "general" },
+            { word: "Hysterical", type: "vocab", meaning: "Điền rồ hahaah", phrase: "", category: "general" },
+            { word: "Priceless", type: "vocab", meaning: "Vô giá", phrase: "", category: "general" },
+            { word: "Misfortune", type: "vocab", meaning: "Bất hạnh", phrase: "", category: "general" },
+            { word: "Mispronounce", type: "vocab", meaning: "Phát âm sai", phrase: "", category: "general" },
+            { word: "Ridiculous", type: "vocab", meaning: "Lố bịch", phrase: "", category: "general" },
+            { word: "Psychiatrist", type: "vocab", meaning: "Bác sĩ tâm lý", phrase: "", category: "general" },
+            { word: "Dirty joke", type: "phrase/idiom", meaning: "Trò đùa về tình dục, khiêu dâm", phrase: "", category: "general" },
+            { word: "Ethnic joke", type: "phrase/idiom", meaning: "Trò đùa về nền dân tộc cụ thể", phrase: "", category: "general" },
+            { word: "Sexist joke", type: "phrase/idiom", meaning: "Trò đùa về đàn ông hoặc phụ nữ", phrase: "", category: "general" },
+            { word: "Political joke", type: "phrase/idiom", meaning: "Trò đùa về chính trị", phrase: "", category: "general" },
+            { word: "Verbal joke", type: "phrase/idiom", meaning: "Trò đùa sử dụng ngôn ngữ theo cách hài hước", phrase: "", category: "general" },
+            { word: "Be the butt of a joke", type: "phrase/idiom", meaning: "Trở thành tâm điểm của trò đùa cợt", phrase: "", category: "general" },
+            { word: "Be in bad ( or poor) taste", type: "phrase/idiom", meaning: "Trở nên phản cảm hoặc tàn nhẫn", phrase: "", category: "general" },
+            { word: "Cross the line", type: "phrase/idiom", meaning: "Vượt quá giớn hạn của một trò đùa", phrase: "", category: "general" },
+            { word: "Drawer", type: "vocab", meaning: "Ngăn kéo", phrase: "", category: "general" },
+            { word: "Swallow", type: "vocab", meaning: "Nuốt", phrase: "", category: "general" },
+            { word: "Insulting", type: "vocab", meaning: "Xúc phạm", phrase: "", category: "general" }
+        ];
+const categoryLabels = { general: { label: "Từ vựng chung", class: "cat-goals" } };
 let learnedWords=JSON.parse(localStorage.getItem('lv6unit5Learned')||'[]');let currentFilter='all';
 function speakWord(w,b){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;const v=window.speechSynthesis.getVoices();const e=v.find(x=>x.lang.startsWith('en'));if(e)u.voice=e;b.classList.add('speaking');u.onend=()=>b.classList.remove('speaking');u.onerror=()=>b.classList.remove('speaking');window.speechSynthesis.speak(u);}
 function speakPhrase(h,b){const d=document.createElement('div');d.innerHTML=h;speakWord(d.textContent||d.innerText,b);}

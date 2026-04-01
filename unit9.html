@@ -22,41 +22,39 @@
     <footer><p>💡 Double-click để đánh dấu đã học</p></footer>
 </div>
 <script>
-const vocabularyData=[
-{word:"a tiny computer chip",type:"phrase",meaning:"vi mạch máy tính nhỏ",phrase:"A very small piece of material inside a computer that stores information.",category:"technology"},
-{word:"absorb",type:"verb",meaning:"hấp thụ",phrase:"To take in liquid, gas, or heat.",category:"nature"},
-{word:"artificial intelligence",type:"phrase",meaning:"trí tuệ nhân tạo",phrase:"Computer systems that can think and learn like humans.",category:"technology"},
-{word:"be catching on",type:"phrase",meaning:"trở nên phổ biến",phrase:"To become popular or fashionable.",category:"idioms"},
-{word:"birthrate",type:"noun",meaning:"tỷ lệ sinh",phrase:"The number of babies born in a place during a specific time.",category:"demographics"},
-{word:"cedar",type:"noun",meaning:"cây tuyết tùng",phrase:"A type of tall evergreen tree with sweet-smelling wood.",category:"nature"},
-{word:"cloning",type:"noun",meaning:"nhân bản vô tính",phrase:"The process of making an exact genetic copy of an animal or plant.",category:"technology"},
-{word:"come to think of it",type:"idiom",meaning:"nghĩ kỹ thì",phrase:"An expression used when you suddenly realize or remember something.",category:"idioms"},
-{word:"computer chip implants",type:"phrase",meaning:"cấy ghép chip",phrase:"Tiny electronic devices put inside the body.",category:"technology"},
-{word:"crime rate",type:"compound noun",meaning:"tỷ lệ tội phạm",phrase:"The number of crimes that happen in a particular area.",category:"demographics"},
-{word:"divorce rate",type:"compound noun",meaning:"tỷ lệ ly hôn",phrase:"The number of marriages that end in divorce during a specific time.",category:"demographics"},
-{word:"dramatically",type:"adverb",meaning:"đáng kể, đột ngột",phrase:"In a great and sudden way.",category:"idioms"},
-{word:"fertility rate",type:"compound noun",meaning:"tỷ lệ sinh sản",phrase:"The average number of children born to a woman.",category:"demographics"},
-{word:"genetic engineering",type:"phrase",meaning:"kỹ thuật di truyền",phrase:"Changing the genes of a living thing to make it healthier.",category:"technology"},
-{word:"It isn't a question of if but when",type:"idiom",meaning:"vấn đề chỉ là thời gian",phrase:"It is certain to happen, we just don't know exactly when.",category:"idioms"},
-{word:"It'll open a can of worms",type:"idiom",meaning:"rước họa vào thân",phrase:"It will create a lot of new problems.",category:"idioms"},
-{word:"It's just scratching the surface",type:"idiom",meaning:"mới chỉ là bề nổi",phrase:"It is only dealing with a very small part of a big problem.",category:"idioms"},
-{word:"life expectancy",type:"compound noun",meaning:"tuổi thọ trung bình",phrase:"The number of years a person is expected to live.",category:"demographics"},
-{word:"literacy rate",type:"compound noun",meaning:"tỷ lệ biết chữ",phrase:"The percentage of people who are able to read and write.",category:"demographics"},
-{word:"marriage trend",type:"compound noun",meaning:"xu hướng kết hôn",phrase:"The general direction of how people are marrying now.",category:"demographics"},
-{word:"mortality rate",type:"compound noun",meaning:"tỷ lệ tử vong",phrase:"The number of deaths in a particular area.",category:"demographics"},
-{word:"nanotechnology",type:"noun",meaning:"công nghệ nano",phrase:"Science that works with extremely small things.",category:"technology"},
-{word:"native",type:"noun/adj",meaning:"bản xứ, địa phương",phrase:"Connected with the place where you were born.",category:"nature"},
-{word:"oak",type:"noun",meaning:"cây sồi",phrase:"A large tree that produces acorns and strong wood.",category:"nature"},
-{word:"redwood",type:"noun",meaning:"cây gỗ đỏ",phrase:"A very tall type of tree that grows in California.",category:"nature"},
-{word:"remote surgery",type:"noun phrase",meaning:"phẫu thuật từ xa",phrase:"An operation done by a doctor using a machine from far away.",category:"technology"},
-{word:"sequoia",type:"noun",meaning:"cây cự sam",phrase:"A huge evergreen tree.",category:"nature"},
-{word:"the bad outweighs the good",type:"idiom",meaning:"hại nhiều hơn lợi",phrase:"There are more disadvantages than advantages.",category:"idioms"},
-{word:"turn things around",type:"idiom",meaning:"xoay chuyển tình thế",phrase:"To change an unsuccessful situation into a successful one.",category:"idioms"},
-{word:"unemployment rate",type:"compound noun",meaning:"tỷ lệ thất nghiệp",phrase:"The percentage of people who do not have a job.",category:"demographics"},
-{word:"unregulated",type:"adjective",meaning:"không được kiểm soát",phrase:"Not controlled by rules or laws.",category:"technology"},
-{word:"virtual reality",type:"noun phrase",meaning:"thực tế ảo",phrase:"Images and sounds produced by a computer that seem real.",category:"technology"}
-];
-const categoryLabels={technology:{label:"Công nghệ",class:"cat-technology"},demographics:{label:"Nhân khẩu",class:"cat-demographics"},nature:{label:"Tự nhiên",class:"cat-nature"},idioms:{label:"Thành ngữ",class:"cat-idioms"}};
+const vocabularyData = [
+            { word: "Surgeries", type: "vocab", meaning: "Ca phẫu thuật", phrase: "", category: "general" },
+            { word: "Petroleum", type: "vocab", meaning: "Dầu mỏ", phrase: "", category: "general" },
+            { word: "Delivered", type: "vocab", meaning: "Chuyển", phrase: "", category: "general" },
+            { word: "Prediction", type: "vocab", meaning: "Sự dự đoán", phrase: "", category: "general" },
+            { word: "Scale", type: "vocab", meaning: "Thang đo", phrase: "", category: "general" },
+            { word: "Probability", type: "vocab", meaning: "Xác xuất", phrase: "", category: "general" },
+            { word: "Cancer", type: "vocab", meaning: "Ung thư", phrase: "", category: "general" },
+            { word: "Obsolete", type: "vocab", meaning: "Lỗi thời", phrase: "", category: "general" },
+            { word: "Vehicle", type: "vocab", meaning: "Phương tiện giao thông", phrase: "", category: "general" },
+            { word: "Digital technology", type: "phrase/idiom", meaning: "Công nghệ kỹ thuật số", phrase: "", category: "general" },
+            { word: "Agriculture", type: "vocab", meaning: "Ngôn nghiệp", phrase: "", category: "general" },
+            { word: "Sighting", type: "vocab", meaning: "Sự nhìn thấy", phrase: "", category: "general" },
+            { word: "Takeoff", type: "vocab", meaning: "Cất cánh", phrase: "", category: "general" },
+            { word: "Landing", type: "vocab", meaning: "Hạ cánh", phrase: "", category: "general" },
+            { word: "It’ll open a can of worms", type: "phrase/idiom", meaning: "Nó sẽ là một vấn đề trong tương lai", phrase: "", category: "general" },
+            { word: "Before you know it", type: "phrase/idiom", meaning: "Nó sẽ sớm xảy ra", phrase: "", category: "general" },
+            { word: "Come to think of it", type: "phrase/idiom", meaning: "Đột nhiên nhớ ra nó", phrase: "", category: "general" },
+            { word: "It isn’t a question of if but when", type: "phrase/idiom", meaning: "Khẳng đị rằng nó sẽ xảy ra", phrase: "", category: "general" },
+            { word: "It’s just scratching the surface", type: "phrase/idiom", meaning: "Nó chỉ là phần nhỏ của bức tranh tông thể", phrase: "", category: "general" },
+            { word: "The bad outweighs the good", type: "phrase/idiom", meaning: "Có nhiều tác hại hơn lợi ích", phrase: "", category: "general" },
+            { word: "Drone", type: "vocab", meaning: "Máy bay không người lái", phrase: "", category: "general" },
+            { word: "Institution", type: "vocab", meaning: "Tổ chức", phrase: "", category: "general" },
+            { word: "Envisioning", type: "vocab", meaning: "Hình dung", phrase: "", category: "general" },
+            { word: "Maglev", type: "vocab", meaning: "Tàu đệm từ", phrase: "", category: "general" },
+            { word: "Magnet", type: "vocab", meaning: "Nam châm", phrase: "", category: "general" },
+            { word: "Route", type: "vocab", meaning: "Tuyến đường", phrase: "", category: "general" },
+            { word: "Alternative", type: "vocab", meaning: "Thay thế", phrase: "", category: "general" },
+            { word: "Identification", type: "vocab", meaning: "Nhận biết", phrase: "", category: "general" },
+            { word: "Construct", type: "vocab", meaning: "Xây dựng", phrase: "", category: "general" },
+            { word: "Spectacular", type: "vocab", meaning: "Hùng vĩ", phrase: "", category: "general" }
+        ];
+const categoryLabels = { general: { label: "Từ vựng chung", class: "cat-goals" } };
 let learnedWords=JSON.parse(localStorage.getItem('lv6unit9Learned')||'[]');let currentFilter='all';
 function speakWord(w,b){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;const v=window.speechSynthesis.getVoices();const e=v.find(x=>x.lang.startsWith('en'));if(e)u.voice=e;b.classList.add('speaking');u.onend=()=>b.classList.remove('speaking');u.onerror=()=>b.classList.remove('speaking');window.speechSynthesis.speak(u);}
 function speakPhrase(h,b){const d=document.createElement('div');d.innerHTML=h;speakWord(d.textContent||d.innerText,b);}
