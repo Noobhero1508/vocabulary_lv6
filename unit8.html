@@ -53,7 +53,7 @@ const vocabularyData=[
 {word:"talented",type:"adjective",meaning:"tài năng",phrase: "She is a talented singer who performs all over the world.",category:"skills"},
 {word:"witty",type:"adjective",meaning:"dí dỏm",phrase: "His speech was smart and very witty.",category:"skills"}
 ];
-const categoryLabels = { general: { label: "Từ vựng chung", class: "cat-goals" } };
+const categoryLabels = { talents: { label: "Năng khiếu", class: "cat-talents" }, skills: { label: "Kỹ năng", class: "cat-skills" }, productivity: { label: "Năng suất", class: "cat-productivity" }, idioms: { label: "Thành ngữ", class: "cat-idioms" } };
 let learnedWords=JSON.parse(localStorage.getItem('lv6unit8Learned')||'[]');let currentFilter='all';
 function speakWord(w,b){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.rate=0.85;const v=window.speechSynthesis.getVoices();const e=v.find(x=>x.lang.startsWith('en'));if(e)u.voice=e;b.classList.add('speaking');u.onend=()=>b.classList.remove('speaking');u.onerror=()=>b.classList.remove('speaking');window.speechSynthesis.speak(u);}
 function speakPhrase(h,b){const d=document.createElement('div');d.innerHTML=h;speakWord(d.textContent||d.innerText,b);}
